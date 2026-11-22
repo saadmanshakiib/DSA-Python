@@ -1,32 +1,48 @@
+
 class Queue:
+
     def __init__(self):
-        self.queue = []
-
-    def enqueue(self,element):
-        self.queue.append(element)
-
-    def dequeue(self):
-        if len(self.queue)== 0: return "Queue Empty"
-        return self.queue.pop(0)
-
-    def size(self):
-        return len(self.queue)
+        self.items = []
 
     def isEmpty(self):
-        return len(self.queue) == 0
-    def peek(self):
-        return self.queue[0]
+        return len(self.items) == 0
+
+    def enqueue(self, item):
+        self.items.append(item)
+
+    def dequeue(self):
+        if not self.isEmpty():
+            return self.items.pop(0)
+
+        return "Empty Queue"
+
+    def front(self):
+        if not self.isEmpty():
+            return self.items[0]
+
+        return "Empty Queue"
+
+    def rear(self):
+        if not self.isEmpty():
+            return self.items[-1]
+
+        return "Empty Queue"
+
+    def display(self):
+        print(self.items)
 
 
-myQueue = Queue()
+queue = Queue()
 
-myQueue.enqueue('A')
-myQueue.enqueue('B')
-myQueue.enqueue('C')
+queue.enqueue(10)
+queue.enqueue(20)
+queue.enqueue(30)
+queue.enqueue(40)
 
-print("Queue: ", myQueue.queue)
-print("Peek: ", myQueue.peek())
-print("Dequeue: ", myQueue.dequeue())
-print("Queue after Dequeue: ", myQueue.queue)
-print("isEmpty: ", myQueue.isEmpty())
-print("Size: ", myQueue.size())
+queue.display()
+
+print("Dequeued:", queue.dequeue())
+print("Front:", queue.front())
+print("Rear:", queue.rear())
+
+queue.display()
